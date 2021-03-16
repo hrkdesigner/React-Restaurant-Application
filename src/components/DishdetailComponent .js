@@ -2,17 +2,20 @@ import React, { Component } from 'react'
 import { Card, CardBody, CardText, CardTitle, CardImg } from 'reactstrap'
 
 
-const DishDetail = (props) => {
+
+const DishDetail = ({ dishDetails }) => {
     return (
         <div className='container mb-5'>
             <div className='row justify-content-center '>
-                <RenderDish dish={props.dishDetails} />
+                <RenderDish dish={dishDetails} />
+                <RenderComments dishComments={dishDetails.comments} />
             </div>
         </div>
     )
 }
 
 function RenderDish({ dish }) {
+    console.log(dish)
     if (dish !== null) {
         return (
             <>
@@ -25,37 +28,36 @@ function RenderDish({ dish }) {
                         </CardBody>
                     </Card>
                 </div>
-                <div className='col-12 col-md-5 m-1'>
-                    <RenderComments dishComments={dish.comments} />
-                </div>
             </>
         )
     } else {
-        return <div></div>
+        return <div>hello</div>
     }
 }
 
 function RenderComments({ dishComments }) {
-    const comments = dishComments.map(comment => {
-        return (
-            <ul class="list-unstyled">
-                <li>
-                    <div>{comment.comment}</div>
-                    <br />
-                    <div>
-                        <span>--{comment.author}, </span>
-                        <span>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</span>
-                    </div>
-                </li>
-            </ul>
-        )
-    })
+    // const comments = dishComments.map(comment => {
+    //     return (
+    //         <div className='col-12 col-md-5 m-1'>
+    //             <ul class="list-unstyled">
+    //                 <li>
+    //                     <div>{comment.comment}</div>
+    //                     <br />
+    //                     <div>
+    //                         <span>--{comment.author}, </span>
+    //                         <span>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</span>
+    //                     </div>
+    //                 </li>
+    //             </ul>
+    //         </div>
+    //     )
+    // })
 
     if (dishComments !== null) {
         return (
             <div>
                 <h4>Comments</h4>
-                {comments}
+                comment place
             </div>
         )
     } else {
