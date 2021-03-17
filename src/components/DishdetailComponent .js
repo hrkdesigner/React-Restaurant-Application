@@ -10,7 +10,6 @@ const DishDetail = ({ dishDetails, dishComments }) => {
         <div className='container '>
             <div className="row">
                     <Breadcrumb>
-
                         <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
                         <BreadcrumbItem active>{dishDetails.name}</BreadcrumbItem>
                     </Breadcrumb>
@@ -51,7 +50,7 @@ function RenderDish({ dish }) {
 function RenderComments({ dishComments }) {
     const comments = dishComments.map(comment => {
         return (
-            <div className='col-12 col-md-5 m-1'>
+            <div className='col-12 m-1'>
                 <ul class="list-unstyled">
                     <li>
                         <div>{comment.comment}</div>
@@ -69,7 +68,7 @@ function RenderComments({ dishComments }) {
     if (dishComments !== null) {
         return (
             <div>
-                <h4>Comments</h4>
+                <h4 className='ml-3'>Comments</h4>
                 {comments}
             </div>
         )
