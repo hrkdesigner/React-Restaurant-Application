@@ -40,7 +40,10 @@ export default class Main extends Component {
 
         const DishWithId = ({match}) => {
             return (
-                <DishDetail dishDetails={this.state.dishes.filter(dish => dish.id === parseInt(match.params.dishId))[0]} />
+                <DishDetail 
+                    dishDetails={this.state.dishes.filter(dish => dish.id === parseInt(match.params.dishId, 10))[0]}
+                    dishComments={this.state.comments.filter(comment => comment.dishId === parseInt(match.params.dishId, 10))} 
+                />
             )
         }
 
@@ -49,7 +52,7 @@ export default class Main extends Component {
                 <Header />
                 <Switch>
                     <Route path='/home' component={HomePage} />
-                    <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} idDetail={(dishId) => this.onDishSelect(dishId)} />} />
+                    <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
                     <Route path='/contactus' component={Contact} />
                     <Route path='/menu/:dishId' component={DishWithId} />
                     <Redirect to='/home' />
