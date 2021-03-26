@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { Card, CardImg, CardText, CardBody,
-    CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, Breadcrumb, BreadcrumbItem
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CommentForm from './CommentForm'
 
 
 
@@ -9,14 +12,14 @@ const DishDetail = ({ dishDetails, dishComments }) => {
     return (
         <div className='container '>
             <div className="row">
-                    <Breadcrumb>
-                        <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>{dishDetails.name}</BreadcrumbItem>
-                    </Breadcrumb>
-                    <div className="col-12">
-                        <h3>{dishDetails.name}</h3>
-                        <hr />
-                    </div>                
+                <Breadcrumb>
+                    <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>{dishDetails.name}</BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12">
+                    <h3>{dishDetails.name}</h3>
+                    <hr />
+                </div>
             </div>
             <div className='row justify-content-center '>
                 <RenderDish dish={dishDetails} />
@@ -70,11 +73,13 @@ function RenderComments({ dishComments }) {
             <div>
                 <h4 className='ml-3'>Comments</h4>
                 {comments}
+                <CommentForm />
             </div>
         )
     } else {
         return <div>No comments!</div>
     }
 }
+
 
 export default DishDetail
