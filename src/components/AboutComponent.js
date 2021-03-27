@@ -23,7 +23,7 @@ function About(props) {
 
     const leaders = props.leaders.map((leader) => {
         return (
-            <RenderLeader leaderDetails={leader} />
+            <RenderLeader leaderDetails={leader} key={leader.name} />
         );
     })
 

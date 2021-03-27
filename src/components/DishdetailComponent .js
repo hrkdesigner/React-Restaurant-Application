@@ -8,7 +8,7 @@ import CommentForm from './CommentForm'
 
 
 
-const DishDetail = ({ dishDetails, dishComments }) => {
+const DishDetail = ({ dishDetails, dishComments, addComment }) => {
     return (
         <div className='container '>
             <div className="row">
@@ -23,14 +23,13 @@ const DishDetail = ({ dishDetails, dishComments }) => {
             </div>
             <div className='row justify-content-center '>
                 <RenderDish dish={dishDetails} />
-                <RenderComments dishComments={dishComments} />
+                <RenderComments dishComments={dishComments} addComment={addComment} dishId={dishDetails.id} />
             </div>
         </div>
     )
 }
 
 function RenderDish({ dish }) {
-    console.log(dish)
     if (dish !== null) {
         return (
             <>
@@ -50,10 +49,10 @@ function RenderDish({ dish }) {
     }
 }
 
-function RenderComments({ dishComments }) {
+function RenderComments({ dishComments, addComment, dishId }) {
     const comments = dishComments.map(comment => {
         return (
-            <div className='col-12 m-1'>
+            <div className='col-12 m-1' key={comment.id}>
                 <ul class="list-unstyled">
                     <li>
                         <div>{comment.comment}</div>
@@ -73,7 +72,7 @@ function RenderComments({ dishComments }) {
             <div>
                 <h4 className='ml-3'>Comments</h4>
                 {comments}
-                <CommentForm />
+                <CommentForm addComment={addComment} dishId={dishId}/>
             </div>
         )
     } else {

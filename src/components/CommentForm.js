@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, Row, Col, ModalBody, Input, Label, FormGroup } from 'reactstrap'
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
+
 class CommentForm extends Component {
     constructor(props) {
         super(props)
@@ -32,9 +33,9 @@ class CommentForm extends Component {
     }
 
     handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
-        // event.preventDefault();
+        this.props.addComment(this.props.dishId, values.contactType, values.lastname, values.message)
+        this.toggleModal()
+
     }
 
 
@@ -44,7 +45,7 @@ class CommentForm extends Component {
         const required = (val) => val && val.length;
         const maxLength = (len) => (val) => !(val) || (val.length <= len);
         const minLength = (len) => (val) => val && (val.length >= len);
-      
+
         return (
             <div>
                 <Button outline onClick={this.toggleModal}><span className="fa fa-pencil fa-lg"></span> Submit Comments</Button>
