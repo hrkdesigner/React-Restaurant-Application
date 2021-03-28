@@ -10,10 +10,7 @@ export const Comments = (state = initialState , action) => {
             return { ...state, errMess: action.payload };
 
         case ActionTypes.ADD_COMMENT:
-            var comment = action.payload;
-            comment.id = state.comments.length;
-            comment.date = new Date().toISOString();
-            return { ...state, comments: [...state.comments , comment] };
+            return { ...state, comments: [...state.comments , action.payload] };
 
         default:
             return state;

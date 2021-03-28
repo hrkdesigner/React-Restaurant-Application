@@ -10,7 +10,7 @@ import { baseUrl } from '../shared/baseUrl';
 
 
 
-const DishDetail = ({ dishDetails, dishComments, addComment, dishesErrMess, dishesLoading }) => {
+const DishDetail = ({ dishDetails, dishComments, postComment, dishesErrMess, dishesLoading }) => {
     if (dishesLoading) {
         return (
             <div className="container">
@@ -44,7 +44,7 @@ const DishDetail = ({ dishDetails, dishComments, addComment, dishesErrMess, dish
                 </div>
                 <div className='row justify-content-center '>
                     <RenderDish dish={dishDetails} />
-                    <RenderComments dishComments={dishComments} addComment={addComment} dishId={dishDetails.id} />
+                    <RenderComments dishComments={dishComments} postComment={postComment} dishId={dishDetails.id} />
                 </div>
             </div>
         )
@@ -72,7 +72,7 @@ function RenderDish({ dish }) {
     }
 }
 
-function RenderComments({ dishComments, addComment, dishId }) {
+function RenderComments({ dishComments, postComment, dishId }) {
     const comments = dishComments.map(comment => {
         return (
             <div className='col-12 m-1' key={comment.id}>
@@ -95,7 +95,7 @@ function RenderComments({ dishComments, addComment, dishId }) {
             <div>
                 <h4 className='ml-3'>Comments</h4>
                 {comments}
-                <CommentForm addComment={addComment} dishId={dishId} />
+                <CommentForm postComment={postComment} dishId={dishId} />
             </div>
         )
     } else {

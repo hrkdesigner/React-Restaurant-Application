@@ -8,14 +8,14 @@ import Footer from './FooterComponent'
 import Home from './Home'
 import Contact from './ContactComponent'
 import About from './AboutComponent'
-import { addComment, fetchDishes, fetchPromos, fetchComments } from '../redux/ActionCreators';
+import { postComment, fetchDishes, fetchPromos, fetchComments } from '../redux/ActionCreators';
 
 import { actions } from 'react-redux-form'
 
 
 const mapDispatchToProps = dispatch => ({
 
-    addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
+    postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
     fetchDishes: () => dispatch(fetchDishes()),
     resetFeedbackForm: () => { dispatch(actions.reset('feedback')) },
     fetchComments: () => dispatch(fetchComments()),
@@ -66,7 +66,7 @@ class Main extends Component {
                 <DishDetail
                     dishDetails={this.props.dishes.dishes.filter(dish => dish.id === parseInt(match.params.dishId, 10))[0]}
                     dishComments={this.props.comments.comments.filter(comment => comment.dishId === parseInt(match.params.dishId, 10))}
-                    addComment={this.props.addComment}
+                    postComment={this.props.postComment}
                     dishesLoading={this.props.dishes.isLoading}
                     dishesErrMess={this.props.dishes.errMess}
                     commentsErrMess={this.props.comments.errMess}
