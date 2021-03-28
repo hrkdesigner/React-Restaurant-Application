@@ -81,17 +81,17 @@ class Main extends Component {
             <div>
                 <Header />
                 <TransitionGroup>
-            <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
-                <Switch>
-                    <Route path='/home' component={HomePage} />
-                    <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes.dishes} />} />
-                    <Route path='/aboutus' component={() => <About leaders={this.props.leaders} />} />
-                    <Route path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
-                    <Route path='/menu/:dishId' component={DishWithId} />
-                    <Redirect to='/home' />
-                </Switch>
-                </CSSTransition>
-          </TransitionGroup>
+                    <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+                        <Switch>
+                            <Route path='/home' component={HomePage} />
+                            <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes.dishes} />} />
+                            <Route path='/aboutus' component={() => <About leaders={this.props.leaders} />} />
+                            <Route path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
+                            <Route path='/menu/:dishId' component={DishWithId} />
+                            <Redirect to='/home' />
+                        </Switch>
+                    </CSSTransition>
+                </TransitionGroup>
                 <Footer />
             </div >
 
