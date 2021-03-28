@@ -4,10 +4,12 @@ import {
   CardTitle, CardSubtitle
 } from 'reactstrap';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl'
 
 
 
 function RenderCard({ item, dishesLoading, dishesErrMess }) {
+
   if (dishesLoading) {
     return (<div className="container">
       <div className="row justify-content-center">
@@ -19,11 +21,16 @@ function RenderCard({ item, dishesLoading, dishesErrMess }) {
     return (
       <h4>{dishesErrMess}</h4>
     );
+  } else if (item == null) {
+    return (<div className="container">
+      <div className="row justify-content-center">
+        <Loading />
+      </div>
+    </div>)
   } else {
     return (
-
       <Card>
-        <CardImg src={item.image} alt={item.name} />
+        <CardImg src={baseUrl + item.image} alt={item.name} />
         <CardBody>
           <CardTitle>{item.name}</CardTitle>
           {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}
@@ -35,6 +42,7 @@ function RenderCard({ item, dishesLoading, dishesErrMess }) {
 }
 
 function Home({ dish, promotion, leader, dishesLoading, dishesErrMess }) {
+
   return (
     <div className="container">
       <div className="row align-items-start">
