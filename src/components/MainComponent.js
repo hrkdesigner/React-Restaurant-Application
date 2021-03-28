@@ -9,6 +9,8 @@ import Home from './Home'
 import Contact from './ContactComponent'
 import About from './AboutComponent'
 import { postComment, fetchDishes, fetchPromos, fetchComments } from '../redux/ActionCreators';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 
 import { actions } from 'react-redux-form'
 
@@ -78,6 +80,8 @@ class Main extends Component {
         return (
             <div>
                 <Header />
+                <TransitionGroup>
+            <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
                 <Switch>
                     <Route path='/home' component={HomePage} />
                     <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes.dishes} />} />
@@ -86,6 +90,8 @@ class Main extends Component {
                     <Route path='/menu/:dishId' component={DishWithId} />
                     <Redirect to='/home' />
                 </Switch>
+                </CSSTransition>
+          </TransitionGroup>
                 <Footer />
             </div >
 
