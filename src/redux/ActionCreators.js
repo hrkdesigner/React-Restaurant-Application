@@ -50,6 +50,18 @@ export const addComment = (comment) => {
 //POST FEDDBACK
 
 export const postFeedback = (values) => (dispatch) => {
+    const {firstname, lastname, telnum, email, agree, contactType, message} = values
+    const newFeedback = {
+        firstname: firstname,
+        lastname: lastname,
+        telnum: telnum,
+        email: email,
+        agree: agree,
+        contactType: contactType,
+        message: message,
+    }
+    newFeedback.date = new Date().toISOString();
+
     return fetch(baseUrl + 'feedback', {
         method: 'POST',
         body: JSON.stringify(values),
@@ -68,7 +80,7 @@ export const postFeedback = (values) => (dispatch) => {
         .then(response => response.json())
         .then(response => {
             console.log(response)
-            alert(JSON.stringify(response))
+            alert(response)
         })
         .catch(error => {
             console.log('post comments', error.message)

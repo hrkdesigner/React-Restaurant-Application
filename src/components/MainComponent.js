@@ -59,7 +59,11 @@ class Main extends Component {
                     dishesLoading={this.props.dishes.isLoading}
                     dishesErrMess={this.props.dishes.errMess}
                     promotion={this.props.promotions.promotions.filter((promo) => promo.featured == true)[0]}
+                    promoLoading={this.props.dishes.isLoading}
+                    promoErrMess={this.props.dishes.errMess}
                     leader={this.props.leaders.leaders.filter(leader => leader.featured == true)[0]}
+                    leaderLoading={this.props.dishes.isLoading}
+                    leaderErrMess={this.props.dishes.errMess}
                 />
             )
         }

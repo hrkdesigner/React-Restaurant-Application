@@ -9,18 +9,18 @@ import { baseUrl } from '../shared/baseUrl'
 
 
 
-function RenderCard({ item, dishesLoading, dishesErrMess }) {
+function RenderCard({ item, isLoading, errMess }) {
 
-  if (dishesLoading) {
+  if (isLoading) {
     return (<div className="container">
       <div className="row justify-content-center">
         <Loading />
       </div>
     </div>)
   }
-  else if (dishesErrMess) {
+  else if (errMess) {
     return (
-      <h4>{dishesErrMess}</h4>
+      <h4>{errMess}</h4>
     );
   } else if (item == null) {
     return (<div className="container">
@@ -49,19 +49,19 @@ function RenderCard({ item, dishesLoading, dishesErrMess }) {
   }
 }
 
-function Home({ dish, promotion, leader, dishesLoading, dishesErrMess }) {
+function Home({ dish, promotion, leader, dishesLoading, dishesErrMess, promoErrMess, promoLoading, leaderLoading, leaderErrMess }) {
 
   return (
     <div className="container">
       <div className="row align-items-start">
         <div className="col-12 col-md m-1">
-          <RenderCard item={dish} dishesLoading={dishesLoading} dishesErrMess={dishesErrMess} />
+          <RenderCard item={dish} isLoading={dishesLoading} errMess={dishesErrMess} />
         </div>
         <div className="col-12 col-md m-1">
-          <RenderCard item={promotion} dishesLoading={dishesLoading} dishesErrMess={dishesErrMess} />
+          <RenderCard item={promotion} isLoading={promoLoading} errMess={promoErrMess} />
         </div>
         <div className="col-12 col-md m-1">
-          <RenderCard item={leader} dishesLoading={dishesLoading} dishesErrMess={dishesErrMess} />
+          <RenderCard item={leader} isLoading={leaderLoading} errMess={leaderErrMess} />
         </div>
       </div>
     </div>

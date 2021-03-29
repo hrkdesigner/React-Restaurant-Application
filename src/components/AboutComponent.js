@@ -25,7 +25,7 @@ function About({ leaders, leaderErrMess, leaderLoading }) {
     }
 
 
-    const FinalLeaders = (leaders, leaderErrMess, leaderLoading) => {
+    const FinalLeaders = ({leaders, leaderErrMess, leaderLoading}) => {
         if (leaderLoading) {
             return (
                 <div className="container">
@@ -114,7 +114,7 @@ function About({ leaders, leaderErrMess, leaderLoading }) {
                 </div>
                 <div className="col-12">
                     <Media list>
-                        {FinalLeaders(leaders, leaderErrMess, leaderLoading)}
+                        <FinalLeaders leaders ={leaders} leaderErrMess={leaderErrMess} leaderLoading={leaderLoading} />
                     </Media>
                 </div>
             </div>
